@@ -1,0 +1,58 @@
+.App{
+    background: var(--bg-desktop);
+  background-size: 100% 30vh;
+    background-color: var(--bg-clr);
+    background-repeat: no-repeat;
+   height:100vh;
+   
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   padding-top:50px;
+   color: var(--text-primary);
+   font-family: 'Josefin Sans', sans-serif;
+   font-size: 18px;
+   transition: all .6s;
+}
+
+h1 h2 h3 {
+    font-weight: 700;
+}
+
+p{
+    font-weight: 400;
+}
+
+.toggleTheme{
+    border:none;
+    background-color: transparent;
+    transition: all .6s;
+}
+
+.toggleTheme:hover{
+    cursor:pointer;
+}
+
+:root{
+    
+       --bg-desktop: url('./images/bg-desktop-light.jpg');
+       --bg-clr: hsl(0, 0%, 98%);
+       --text-primary: black;
+}
+
+[data-theme= 'dark']{
+ --bg-desktop: url('./images/bg-desktop-dark.jpg');
+ --bg-clr: hsl(235, 21%, 11%);
+ --text-primary:white;
+}
+
+.todo{
+    display:flex;
+    justify-content: space-between;
+    width: 45vw;
+    letter-spacing: .4rem;
+}
+
+.cross{
+    text-decoration: line-through;
+}

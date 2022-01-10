@@ -7,7 +7,7 @@ import moon from './images/icon-moon.svg'
 import axios from 'axios'
 import ToDoList from './todoList'
 import Form from './form'
-import data from './data.json'
+
 
 
 
@@ -15,21 +15,21 @@ import data from './data.json'
 function Father() {
 const [pic, setPic] = useState(moon)
 const [theme, setTheme] = useState('light');
-const [dataList, setData] = useState(data);
+const [dataList, setData] = useState([]);
 
 
-  /* useEffect(() => {
+   useEffect(() => {
      return () => {
-       axios.get("https://jsonplaceholder.typicode.com/todos").then((res) => {
+       axios.get("https://jsonplaceholder.typicode.com/users/1/todos").then((res) => {
          setData(res.data);
-       
+       console.log(dataList)
          
        
          
        } ) ;
      };
-   }, );
-   */
+   }, [] );
+   
 
     const handleToggle = (id) => {
       let mapped = dataList.map((task) => {
@@ -43,12 +43,17 @@ const [dataList, setData] = useState(data);
 
 const addTask = (userInput) => {
 
+if(userInput.trim("").length>1){
 
-    dataList.push({
+  let copy = [...dataList];
+  copy = [...copy,
+     {
       id: dataList.length + 1,
       title: userInput,
       completed: false,
-    });
+    }]
+    setData(copy)
+  }
 
    console.log(dataList);
 

@@ -7,7 +7,7 @@ import Papp from './Components/Papp'
 
 ReactDOM.render(
   <React.StrictMode>
-    <Papp />
+    <Father />
   </React.StrictMode>,
   document.getElementById('root')
 )

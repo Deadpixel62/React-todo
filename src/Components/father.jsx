@@ -16,17 +16,18 @@ function Father() {
 const [pic, setPic] = useState(moon)
 const [theme, setTheme] = useState('light');
 const [dataList, setData] = useState([]);
+const [count, setCount] = useState(0);
 
 
    useEffect(() => {
-     return () => {
-       axios.get("https://jsonplaceholder.typicode.com/users/1/todos").then((res) => {
+   let mounted = true;
+   if(mounted){
+   axios.get("https://jsonplaceholder.typicode.com/users/1/todos").then((res) => {
          setData(res.data);
-       console.log(dataList)
-         
-       
-         
-       } ) ;
+       console.log(dataList)})}
+
+     return () => {
+       mounted=false
      };
    }, [] );
    
@@ -39,6 +40,7 @@ const [dataList, setData] = useState([]);
       });
     
       setData(mapped);
+      counter();
     };
 
 const addTask = (userInput) => {
@@ -54,7 +56,7 @@ if(userInput.trim("").length>1){
     }]
     setData(copy)
   }
-
+counter();
    console.log(dataList);
 
 
@@ -68,18 +70,43 @@ const switchTheme = () => {
 }
 
 
+
+const counter = () => {
+ 
+  let filtered = dataList.filter((task) => {
+    return  task.complete;
+  });
+
+ 
+  setCount(filtered.length + 1);
+
+   return count ;
+};
+
+
+const handleFilter = () => {
+  let filtered = dataList.filter((task) => {
+    return !task.complete;
+  });
+  setData(filtered);
+  setCount(0);
+};
+
     return (
       <div className="App" data-theme={theme}>
-        <div className="todo">
-          <h1>TO DO </h1>
+        <div className="container">
+          <div className="todo">
+            <h1>TO DO </h1>
 
-          <button className="toggleTheme" onClick={switchTheme}>
-            {" "}
-            <img src={pic} />{" "}
-          </button>
+            <button className="toggleTheme" onClick={switchTheme}>
+              {" "}
+              <img src={pic} />{" "}
+            </button>
+          </div>
+          <Form  addTask={addTask} />
+          <ToDoList count={count} deleteComp={handleFilter} dataList={dataList} handleToggle={handleToggle} />
         </div>
-        <Form addTask={addTask} />
-        <ToDoList dataList={dataList} handleToggle={handleToggle} />
+     
       </div>
     );
 }
@@ -89,23 +116,5 @@ export default Father
 
 
 
-
-
-/*
- const handleToggle = (id) => {
-   let mapped = toDoList.map((task) => {
-     return task.id == id ? { ...task, complete: !task.complete } : { ...task };
-   });
-   setToDoList(mapped);
- };
-
-
-  {
-   "id": 13,
-   "task": "Exercise",
-   "complete": false
- }
-
- */
 
 

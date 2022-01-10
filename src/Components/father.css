@@ -3,7 +3,7 @@
   background-size: 100% 30vh;
     background-color: var(--bg-clr);
     background-repeat: no-repeat;
-   height:100vh;
+    padding-bottom: 4vh;
    
    display: flex;
    flex-direction: column;
@@ -36,23 +36,118 @@ p{
 :root{
     
        --bg-desktop: url('./images/bg-desktop-light.jpg');
-       --bg-clr: hsl(0, 0%, 98%);
+       --bg-clr: hsl(236, 33%, 92%);
        --text-primary: black;
+       --form-bg: hsl(0, 0%, 98%);
+       --input-bg: hsl(0, 0%, 98%);
+       --box-shadow: rgba(210,211,219,1);
 }
 
 [data-theme= 'dark']{
  --bg-desktop: url('./images/bg-desktop-dark.jpg');
  --bg-clr: hsl(235, 21%, 11%);
- --text-primary:white;
+ --text-primary:white; 
+ --form-bg:  hsl(235, 24%, 19%); 
+ --input-bg: hsl(235, 24%, 19%);
+ --box-shadow: rgba(22,23,34,1);
 }
 
 .todo{
     display:flex;
     justify-content: space-between;
-    width: 45vw;
+    width:100%;
     letter-spacing: .4rem;
+}
+
+.container{
+width: 45vw;
+display: flex;
+flex-direction: column;
+gap:2vh;
 }
 
 .cross{
     text-decoration: line-through;
+    color: green;
+}
+
+ul{
+    list-style: none;
+    text-align: start;
+    margin:0;
+    
+    background-color: var(--form-bg);
+    border:none;
+    padding: 5px;
+    border-radius: 4px;
+    box-shadow: 1px 4px 30px 6px var(--box-shadow);
+-webkit-box-shadow: 1px 4px 30px 6px var(--box-shadow);
+-moz-box-shadow: 1px 4px 30px 6px var(--box-shadow);
+}
+
+ul li{
+    padding: 8px 0;
+    border-bottom: 1px solid grey;
+    display: flex;
+    align-items: center;
+    gap: 15px
+}
+
+li:hover{
+    cursor:pointer
+}
+
+
+.inputForm{
+    display: flex;
+    align-items: center;
+
+   
+    
+}
+input{
+    background-color: var(--input-bg);
+    margin:0;
+    
+    outline:none;
+    border:none;
+    color:var(--text-primary);
+    height:29px;
+}
+
+input[type=text]{
+   flex-grow:4;
+   padding:5px ; 
+}
+
+input[type=submit]{
+    
+  height: 39px;
+}
+
+input[type=submit]:hover{
+    cursor: pointer;
+}
+
+
+
+.bottomList{
+    border:none;
+    display:flex;
+    justify-content: space-around;
+}
+
+.bottomList:hover{
+    cursor: initial;
+}
+
+a{
+    text-decoration: none;
+    color:var(--text-primary);
+
+}
+
+a:hover{
+    cursor: pointer;
+    color:lightblue
 }

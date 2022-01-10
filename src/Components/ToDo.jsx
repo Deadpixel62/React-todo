@@ -13,7 +13,8 @@ function ToDo({todo, handleToggle, keyz}) {
 
 
     return (
-      <div
+
+      <li
         id={todo.id}
         key={keyz}
         name="todo"
@@ -21,8 +22,8 @@ function ToDo({todo, handleToggle, keyz}) {
         className={todo.complete ? "cross" : ""}
         onClick={handleClick}
       >
-        <input value="yes" defaultChecked={todo.complete} type="checkbox" onClick={handleClick} /> {todo.title}
-      </div>
+        <input value="yes" checked={todo.complete} defaultChecked={todo.complete} type="checkbox" onClick={handleClick} /> {todo.title}
+      </li>
     );
 }
 

@@ -16,13 +16,11 @@ function Form({addTask}) {
 
 
     return (
-       <form onSubmit={handleSubmit}>
-       
-       <input type="text" value={userInput} onChange={handleChange}/>
-       <input type="submit"/>
-       
-       </form>
-    )
+      <form className="inputForm" onSubmit={handleSubmit}>
+        <input type="text" value={userInput} onChange={handleChange} />
+        <input type="submit" />
+      </form>
+    );
 }
 
 export default Form

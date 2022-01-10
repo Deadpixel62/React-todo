@@ -1,14 +1,14 @@
 import React from 'react'
 import ToDo from './ToDo'
 
-function TodoList({dataList, handleToggle}) {
+function TodoList({dataList, handleToggle, count, deleteComp}) {
     return (
-      <div>
+      <ul>
         {dataList.map((todo) => {
           return <ToDo keyz={todo.id} todo={todo} handleToggle={handleToggle} />;
         })}
-        
-      </div>
+        <li className="bottomList">{count} Completed <a onClick={deleteComp} href="#">Delete Completed</a></li>
+      </ul>
     );
 }
 
